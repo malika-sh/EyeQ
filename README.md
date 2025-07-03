@@ -49,7 +49,7 @@ Prerequisite: Python 3.10+ and VS Code installed on Windows
 
 
 # 1. Clone this repo
-git clone https://github.com/yourusername/EyeQ.git
+git clone https://github.com/malika-sh/EyeQ.git
 cd EyeQ
 
 # 2. (Optional but recommended) Set up virtual environment
@@ -76,6 +76,7 @@ If you'd like to contribute or report issues, please open an issue.
 Built with ❤ as part of a medtech research internship project by Malika & Niomi.
 
 Special thanks to open-source libraries like PyTorch, Flask, Captum, and the Kaggle medical imaging community.
+
 ---
 ## 🌟 Contact
 For questions, feedback, or collaboration ideas:
