@@ -66,7 +66,7 @@ Open your browser and go to: http://localhost:5000
 ---
 ## 📜 License
 
-Licensed under the MIT License – see the LICENSE file for full details.
+Licensed under the *MIT License* – see the LICENSE file for full details.
 ---
 
 ## 🤝 Contributing
