@@ -48,37 +48,41 @@ EyeQ/
 Prerequisite: Python 3.10+ and VS Code installed on Windows
 
 
-# 1. Clone this repo
+- 1. Clone this repo
 git clone https://github.com/malika-sh/EyeQ.git
 cd EyeQ
 
-# 2. (Optional but recommended) Set up virtual environment
+- 2. (Optional but recommended) Set up virtual environment
 python -m venv venv
 venv\Scripts\activate
 
-# 3. Install dependencies
+- 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Run the web app
+- 4. Run the web app
 python app.py
 Open your browser and go to: http://localhost:5000
 
 ---
 ## 📜 License
+
 Licensed under the MIT License – see the LICENSE file for full details.
 ---
 
 ## 🤝 Contributing
+
 Pull requests and suggestions are welcome!
 If you'd like to contribute or report issues, please open an issue.
 
 ## 🙏 Acknowledgements
+
 Built with ❤ as part of a medtech research internship project by Malika & Niomi.
 
 Special thanks to open-source libraries like PyTorch, Flask, Captum, and the Kaggle medical imaging community.
 
 ---
 ## 🌟 Contact
+
 For questions, feedback, or collaboration ideas:
 📩 [sharmamalika921@gmail.com]
 ---
