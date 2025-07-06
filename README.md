@@ -130,7 +130,7 @@ Flask `/predict` route returns:
   - [APTOS 2019](https://www.kaggle.com/c/aptos2019-blindness-detection/data)
   - [EyePACS](https://www.kaggle.com/c/diabetic-retinopathy-detection/data)
 
-- Glaucoma (no DR present):
+- Glaucoma 
   - [REFUGE](https://zenodo.org/record/3703974)
   - [DRISHTI-GS1](https://cvit.iiit.ac.in/projects/mip/drishti-gs/mip-dataset2/Home.php)
   - [RIM-ONE DL](https://vibot.cnrs.fr/dataset-rim-one/)
