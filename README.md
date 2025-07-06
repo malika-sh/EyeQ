@@ -1,7 +1,7 @@
 # EyeQ: AI-Powered Eye Disease Diagnosis
 
 **Last Updated:** 2025-07-06 09:24:08  
-**Author:** Malika Sharma  
+**Author:** Malika Sharma & Niomi Langaliya
 **Project Type:** Flask + Vite Frontend + PyTorch AI Models  
 **Use Case:** Diabetic Retinopathy and Glaucoma Detection from Fundus Images  
 **Explainability:** GradCAM Heatmaps (DR Only)  
