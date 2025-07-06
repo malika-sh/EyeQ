@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EyeQ Medical Diagnosis Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>EyeQ</h1>
+                        <p>AI-Powered Eye Disease Diagnosis</p>
+                    </div>
+                </div>
+                <div class="header-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
+                        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
+                    </svg>
+                    <span>AI Diagnostics</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message hidden">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22,4 12,14.01 9,11.01"/>
+                </svg>
+                <span id="successText"></span>
+            </div>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-header">
+                    <h2>Upload Fundus Image</h2>
+                    <p>Upload a fundus image to diagnose Diabetic Retinopathy and Glaucoma</p>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content" id="uploadContent">
+                        <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <p class="upload-text">Drag and drop your fundus image here, or click to select</p>
+                        <button type="button" class="upload-button" id="selectButton">Select Image</button>
+                    </div>
+                    
+                    <div class="image-preview hidden" id="imagePreview">
+                        <img id="previewImage" alt="Preview" />
+                        <button class="clear-button" id="clearButton" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png" class="hidden">
+
+                <div class="predict-section hidden" id="predictSection">
+                    <button id="predictButton" class="predict-button">
+                        <svg class="predict-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                        <span class="predict-text">Predict</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Information Cards -->
+            <section class="info-sections">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Diabetic Retinopathy Detection</h3>
+                    <p>Advanced AI algorithms analyze fundus images to detect and classify diabetic retinopathy stages from mild to proliferative.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Glaucoma Screening</h3>
+                    <p>Comprehensive optic disc analysis to identify glaucomatous changes and assess cup-to-disc ratio abnormalities.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                    </div>
+                    <h3>Clinical Accuracy</h3>
+                    <p>Trained on thousands of validated fundus images with clinical-grade accuracy for reliable diagnostic support.</p>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="features-header">
+                    <h2>Advanced AI Diagnostic Features</h2>
+                    <p>Comprehensive eye disease analysis powered by state-of-the-art machine learning</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12l2 2 4-4"/>
+                                <path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"/>
+                                <path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"/>
+                                <path d="M12 3c0 1-1 3-3 3s-3-2-3-3 1-3 3-3 3 2 3 3"/>
+                                <path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Multi-Disease Detection</h4>
+                            <p>Simultaneous screening for diabetic retinopathy and glaucoma from a single fundus image upload.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21,15 16,10 5,21"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>GradCAM Visualization</h4>
+                            <p>Visual heatmaps showing exactly which areas of the retina influenced the AI's diagnostic decision.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 9V5a3 3 0 0 0-6 0v4"/>
+                                <rect x="2" y="9" width="20" height="11" rx="2" ry="2"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>HIPAA Compliant</h4>
+                            <p>Secure image processing with no data retention, ensuring patient privacy and regulatory compliance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <polyline points="17,11 19,13 23,9"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Doctor Feedback System</h4>
+                            <p>Continuous learning through physician validation to improve diagnostic accuracy over time.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prediction Results -->
+            <section class="results-section hidden" id="resultsSection">
+                <div class="results-grid">
+                    <!-- Diabetic Retinopathy Results -->
+                    <div class="result-card dr-card">
+                        <div class="result-header dr-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <h3>Diabetic Retinopathy</h3>
+                        </div>
+                        
+                        <div class="result-content">
+                            <div class="prediction-info">
+                                <div class="info-row">
+                                    <span class="info-label">Prediction</span>
+                                    <span class="info-value dr-status" id="drStatus">Moderate DR</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Confidence</span>
+                                    <span class="info-value" id="drConfidence">93.2%</span>
+                                </div>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill dr-fill" id="drConfidenceBar" style="width: 93.2%"></div>
+                                </div>
+                            </div>
+
+                            <div class="gradcam-section">
+                                <img id="drGradcam" src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="DR GradCAM" class="gradcam-image" />
+                            </div>
+
+                            <div class="summary-section">
+                                <h4>Summary</h4>
+                                <p id="drSummary">This fundus image shows signs of moderate diabetic retinopathy with visible microaneurysms and hemorrhages. Early intervention is recommended.</p>
+                            </div>
+
+                            <!-- Doctor Feedback -->
+                            <div class="feedback-section">
+                                <button class="feedback-toggle" id="drFeedbackToggle">
+                                    <span>Doctor Feedback</span>
+                                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6,9 12,15 18,9"/>
+                                    </svg>
+                                </button>
+                                
+                                <div class="feedback-form hidden" id="drFeedbackForm">
+                                    <div class="feedback-question">
+                                        <p>Was the prediction correct?</p>
+                                        <div class="radio-group">
+                                            <label class="radio-label">
+                                                <input type="radio" name="dr-correct" value="yes" checked>
+                                                <span>Yes</span>
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="dr-correct" value="no">
+                                                <span>No</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="correct-label-section hidden" id="drCorrectLabel">
+                                        <label for="drActualLabel">Correct Label</label>
+                                        <select id="drActualLabel" class="select-input">
+                                            <option value="">Select correct label</option>
+                                            <option value="No DR">No DR</option>
+                                            <option value="Mild DR">Mild DR</option>
+                                            <option value="Moderate DR">Moderate DR</option>
+                                            <option value="Severe DR">Severe DR</option>
+                                            <option value="Proliferative DR">Proliferative DR</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="button" class="submit-feedback-button" id="drSubmitFeedback">
+                                        Submit Feedback
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Recent Feedback -->
+                            <div class="recent-feedback-section">
+                                <h4>📊 Recent Feedback</h4>
+                                <div id="recentDrFeedback" class="recent-feedback-list">
+                                    <p>Loading...</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Glaucoma Results -->
+                    <div class="result-card glaucoma-card">
+                        <div class="result-header glaucoma-header">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <h3>Glaucoma</h3>
+                        </div>
+                        
+                        <div class="result-content">
+                            <div class="prediction-info">
+                                <div class="info-row">
+                                    <span class="info-label">Prediction</span>
+                                    <span class="info-value glaucoma-status" id="glaucomaStatus">Normal</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-label">Confidence</span>
+                                    <span class="info-value" id="glaucomaConfidence">87.5%</span>
+                                </div>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill glaucoma-fill" id="glaucomaConfidenceBar" style="width: 87.5%"></div>
+                                </div>
+                                <!-- Recent Feedback -->
+                                <div class="recent-feedback-section">
+                                    <h4>📊 Recent Feedback</h4>
+                                    <div id="recentGlaucomaFeedback" class="recent-feedback-list">
+                                        <p>Loading...</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="gradcam-section">
+                                <img id="glaucomaGradcam" src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=300&h=200&fit=crop" alt="Glaucoma GradCAM" class="gradcam-image" />
+                            </div>
+
+                            <div class="summary-section">
+                                <h4>Summary</h4>
+                                <p id="glaucomaSummary">The optic disc appears normal with healthy cup-to-disc ratio. No signs of glaucomatous changes detected.</p>
+                            </div>
+
+                            <!-- Doctor Feedback -->
+                            <div class="feedback-section">
+                                <button class="feedback-toggle" id="glaucomaFeedbackToggle">
+                                    <span>Doctor Feedback</span>
+                                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6,9 12,15 18,9"/>
+                                    </svg>
+                                </button>
+                                
+                                <div class="feedback-form hidden" id="glaucomaFeedbackForm">
+                                    <div class="feedback-question">
+                                        <p>Was the prediction correct?</p>
+                                        <div class="radio-group">
+                                            <label class="radio-label">
+                                                <input type="radio" name="glaucoma-correct" value="yes" checked>
+                                                <span>Yes</span>
+                                            </label>
+                                            <label class="radio-label">
+                                                <input type="radio" name="glaucoma-correct" value="no">
+                                                <span>No</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="correct-label-section hidden" id="glaucomaCorrectLabel">
+                                        <label for="glaucomaActualLabel">Correct Label</label>
+                                        <select id="glaucomaActualLabel" class="select-input">
+                                            <option value="">Select correct label</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Glaucoma">Glaucoma</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="button" class="submit-feedback-button" id="glaucomaSubmitFeedback">
+                                        Submit Feedback
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>EyeQ - AI-Powered Eye Disease Diagnosis System</p>
+                <p class="footer-subtitle">For medical professionals and healthcare providers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/script.js"></script>
+
+</body>
+</html>

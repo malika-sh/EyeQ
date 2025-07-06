@@ -1,0 +1,11 @@
+flask
+torch
+torchvision
+torchaudio
+captum
+transformers
+Pillow
+matplotlib
+numpy
+scikit-learn
+timm
