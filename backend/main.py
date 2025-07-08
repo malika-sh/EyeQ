@@ -11,13 +11,15 @@ from torchvision import transforms
 from captum.attr import LayerGradCam
 import matplotlib.pyplot as plt
 from datetime import datetime
+from flask_cors import CORS
 
 from model import CNNViT
 from model_glaucoma import glaucoma_model, glaucoma_processor, glaucoma_labels
 
 # ------------------- SETUP -------------------
-app = Flask(__name__, static_folder="../frontend/dist", static_url_path="/")
-UPLOAD_FOLDER = "static/images"
+app = Flask(__name__, static_folder="static", static_url_path="/static")
+CORS(app)
+UPLOAD_FOLDER = os.path.join(app.static_folder, "images")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -45,7 +47,7 @@ def generate_gradcam(model, input_tensor, image_path):
     heatmap = upsampled_attr.squeeze().detach().numpy()
     heatmap_norm = (heatmap - heatmap.min()) / (heatmap.max() - heatmap.min())
     heatmap_color = plt.cm.jet(heatmap_norm)[..., :3]
-    original = Image.open(image_path).resize((224, 224))
+    original = Image.open(image_path).resize((224, 224)).convert("RGB")
     original_np = np.array(original).astype(float) / 255.0
     overlay = (heatmap_color * 0.5 + original_np * 0.5)
     overlay_img = Image.fromarray((overlay * 255).astype(np.uint8))
@@ -76,7 +78,7 @@ def generate_glaucoma_gradcam(model, input_tensor, image_path):
 
 @app.route("/")
 def serve_frontend():
-    return send_from_directory(app.static_folder, "index.html")
+    return send_from_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/dist")), "index.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
